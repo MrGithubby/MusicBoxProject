@@ -4,110 +4,119 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MusicBox</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/grids-responsive-min.css" />
-    <link rel="stylesheet" href="/layouts/blog/styles.css">
-    <link rel="stylesheet" href=".\assets\css\style.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
+      integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/grids-responsive-min.css"
+    />
+    <link rel="stylesheet" href="/layouts/blog/styles.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body class="layout">
-    
-    <main >
-      
-        <header>
-            <div class="header">
-                
-                <h1><i class="fa-solid fa-music"></i>MusicBox<i class="fa-solid fa-play"></i></h1>
+    <main>
+      <header>
+        <div class="header">
+          <h1>
+            <i class="fa-solid fa-music"></i>MusicBox<i
+              class="fa-solid fa-play"
+            ></i>
+          </h1>
+        </div>
+      </header>
+      <section class="music-app">
+        <div class="form-container">
+          <div class="sidebar pure-u-1-5">
+            <form id="pure-form pure-form-stacked">
+              <fieldset>
+                <legend>Discovery Starts Here:</legend>
+                <label for="artist-search">Artist Search:</label>
+                <input type="text" id="artist-search" placeholder="Artist"/>
+                <br>
+                <label for="genre-search">Genre Search:</label>
+                <select id="genre-search">
+                  <option>No Selection</option>
+                  <option>Alternative</option>
+                  <option>Classical</option>
+                  <option>Country</option>
+                  <option>Christian</option>
+                  <option>Disco</option>
+                  <option>Electronic</option>
+                  <option>Funk</option>
+                  <option>Heavy Metal</option>
+                  <option>Rap/Hip Hop</option>
+                  <option>Instrumental</option>
+                  <option>Jazz</option>
+                  <option>Other</option>
+                  <option>Pop</option>
+                  <option>Reggae</option>
+                  <option>Rhythm and Blues</option>
+                  <option>Rock</option>
+                  <option>Techno</option>
+                  <option>World Music</option>
+                </select>
+                <br>
+                <label for="decade-search">Decade Search:</label>
+                <select id="decade-search">
+                  <option>No Selection</option>
+                  <option>50s</option>
+                  <option>60s</option>
+                  <option>70s</option>
+                  <option>80s</option>
+                  <option>90s</option>
+                  <option>00s</option>
+                  <option>10s</option>
+                  <option>20s</option>
+                  <option>Other</option>
+                </select>
+                <br>
+                <button type="submit" class="pure-button pure-button-primary">
+                  Search
+                </button>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </section>
+      <section class="info-container">
+        <div class="content pure-u-1 pure-u-md-3-4">
+          <h2 class="content-subhead">Information</h2>
+          <div class="info">
+            <header class="info-header">Song Name:</header>
+            <div class="info-body">
+              <p>Artist Name:</p>
+              <p>CoverArt/Img:</p>
+              <p>Genre:</p>
+              <p>Release date:</p>
+              <p>Album name:</p>
             </div>
-        </header>
-
-
-        <section class="music-app">
-            <div class="form-container">
-                <div class="sidebar pure-u-1-5">
-                    <form id="pure-form pure-form-stacked">
-                        <fieldset>
-                        <legend>Discovery Starts Here:</legend>
-                        <label for="artist-search">Artist Search:</label>
-                        <input type="text" id="artist-search" placeholder="Artist"/>
-                            <br>
-                        <label for="genre-search">Genre Search:</label>
-                        <select id="genre-search">
-                            <option>No Selection</option>
-                            <option>Alternative</option>
-                            <option>Classical</option>
-                            <option>Country</option>
-                            <option>Christian</option>
-                            <option>Disco</option>
-                            <option>Electronic</option>
-                            <option>Funk</option>
-                            <option>Heavy Metal</option>
-                            <option>Rap/Hip Hop</option>
-                            <option>Instrumental</option>
-                            <option>Jazz</option>
-                            <option>Other</option>
-                            <option>Pop</option>
-                            <option>Reggae</option>                       
-                            <option>Rhythm and Blues</option>
-                            <option>Rock</option>
-                            <option>Techno</option>
-                            <option>World Music</option>
-                        </select>
-                            <br>
-                        <label for="decade-search">Decade Search:</label>
-                        <select id="decade-search">
-                            <option>No Selection</option>
-                            <option>50s</option>
-                            <option>60s</option>
-                            <option>70s</option>
-                            <option>80s</option>
-                            <option>90s</option>
-                            <option>00s</option>
-                            <option>10s</option>
-                            <option>20s</option>
-                            <option>Other</option>
-                        </select>   
-                            <br>
-                        <button type="submit" class="pure-button pure-button-primary">Search</button>
-                        </fieldset>
-                    </form>
-                </div>   
-            </div>
-        </section>
-
-        <section class="info-container">
-            <div class="content pure-u-1 pure-u-md-3-4">
-                <h1 class="content-subhead">Information:</h1>
-                <div class="info">
-                    <header class="info-header">Song Name</header>
-                    <div class="info-body">
-                        <p>Artist Name</p>
-                        <p>CoverArt/Img</p>
-                        <p>Genre</p>
-                        <p>Release date</p>
-                        <p>Album name</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="play-container">
-            <div class="content pure-u-1 pure-u-md-3-4">
-                <div class="play-body">
-                    <p>Widget Goes Here</p>
-                    <div id="player"></div>
-                </div>
-            </div>
-        </section>
-
-            
-     
-
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>  
+          </div>
+        </div>
+      </section>
+      <section class="play-container">
+        <div class="content pure-u-1 pure-u-md-3-4">
+          <div class="play-body">
+            <p>Widget Goes Here</p></div>
+            <div id="player"></div>
+        </div>
+      </section>
+      <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+      <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
       <script src=".\assets\js\form.js"></script>
       <script src="deezerapi.js"></script>
+      
     </main>
   </body>
 </html>
