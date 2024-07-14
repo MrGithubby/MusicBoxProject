@@ -60,7 +60,7 @@ const getMusicPlaylistHandler = function() {
 const getMusicPlaylistbyGenre = function () {
     const genre = genreInputEl.value.trim();
     console.log(genre);
-    const apiUrl = `http://ws.audioscrobbler.com/2.0/?method=tag.gettoptracks&tag=${genre}&api_key=a44d846982283933b1ebb0aacdef6e3b&format=json`;
+    const apiUrl = `https://ws.audioscrobbler.com/2.0/?method=tag.gettoptracks&tag=${genre}&api_key=a44d846982283933b1ebb0aacdef6e3b&format=json`;
    
     //fetch request
     function jsonp(apiURL, callback) {
@@ -75,7 +75,7 @@ const getMusicPlaylistbyGenre = function () {
       document.body.appendChild(script);
     }
     
-    jsonp('http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=${artist}&api_key=a44d846982283933b1ebb0aacdef6e3b&format=json', function(data) {
+    jsonp('https://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=${artist}&api_key=a44d846982283933b1ebb0aacdef6e3b&format=json', function(data) {
       const trackArray = data.tracks.track;
       function pickRandomTrack(arr) {
         let randomIndex = Math.floor(Math.random() * trackArray.length);
