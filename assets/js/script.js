@@ -1,4 +1,3 @@
-
 const userFormEl = document.querySelector(".user-form");
 const searchButtonEl = document.querySelector(".pure-button-primary");
 const artistInputEl = document.querySelector("#artist-search");
