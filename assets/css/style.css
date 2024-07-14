@@ -88,3 +88,61 @@ img {
 .footer {
     padding: 1em 0;
 }
+
+
+
+
+
+.button-secondary {
+    background: rgb(66, 184, 221);
+}
+
+
+.button-xlarge {
+    background: rgb(66, 184, 221);
+
+}
+
+.widget-subhead {
+    text-transform: uppercase;
+    color: #292828;
+    border-bottom: 1px solid #eee;
+    padding: 0.4em 0;
+    font-size: 80%;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+}
+
+
+.question-widget {
+    text-transform: uppercase;
+    padding: .5em;
+    border: 1px solid black;
+    font-family: Georgia, "Cambria", serif;
+    line-height: 1.8em;
+    font-size: 90%;
+    margin:0 40px;
+    color: black;
+    background: rgb(225, 227, 228);
+    width: 400px;
+    height: 170px
+    
+}
+
+
+.photo-box {
+    position: relative;
+    float: right;
+    width: 200px;
+    height: 200px;
+    background: rgb(225, 227, 228);
+    border: 1px solid black;
+}
+
+
+.next-buttons {
+    position: relative;
+    float: right;
+}
+
+
