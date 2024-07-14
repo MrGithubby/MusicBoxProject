@@ -1,111 +1,110 @@
 /* Global styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: wheat;
-  }
-  
-  h1 {
-    /*music box emblem*/
-    font-size: 2em;
-    margin: 0.5em 0;
-    background-color: wheat;
-    color: hsl(219, 91%, 60%);
-    text-align: center;
-  }
-  
-  h2 {
-    font-size: 1.5em; /*tag for information*/
-    margin: 0.5em 0;
-    /* text-align: center; */
-  }
-  
-  p {
-    margin: 0.5em 0;
-  }
-  
-  /* Form styles */
-  .form-container {
-    display: flex;
-  }
-  
-  .sidebar {
-    background-color: #f9f9f9;
-    padding: 1em;
-    width: 20%;
-  }
-  
-  form {
-    margin-bottom: 1em;
-    color: hsl(219, 91%, 60%);
-  }
-  
-  fieldset {
-    border: 1px solid hsl(219, 91%, 60%);
-    padding: 1em;
-  }
-  
-  legend {
-    font-weight: bold;
-  }
-  
-  label {
-    display: flex;
-  }
-  
-  /*input[type="text"],
-  select {
-      width: 100%;
-      padding: 0.5em;
-      margin-bottom: 0.5em;
-  } */
-  
-  button {
-    padding: 0.5em 1em;
-    border: none;
-    cursor: pointer;
-    background-color: hsl(219, 91%, 60%);
-  }
-  
-  button:hover {
-    background-color: #555;
-  }
-  
-  /* Content styles */
-  .info-container {
-    display: flex;
-    margin-bottom: 0;
-    font-size: 1.5em;
-    font-weight: bold;
-    padding: 0;
-    width: 100%;
-    border: 7px solid hsl(219, 91%, 60%);
-    /* text-align: center; */
-    background-color: wheat;
-    color: hsl(219, 91%, 60%);
-    position: relative;
-  }
-  
-  /* Play container styles */
+  font-family: Arial, sans-serif;
+  background-color: wheat;
+}
+
+h1 {
+  /*music box emblem*/
+  font-size: 2em;
+  margin: 0.5em 0;
+  background-color: wheat;
+  color: hsl(219, 91%, 60%);
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.5em; /*tag for information*/
+  margin: 0.5em 0;
+  /* text-align: center; */
+}
+
+p {
+  margin: 0.5em 0;
+}
+
+/* Form styles */
+.form-container {
+  display: flex;
+}
+
+.sidebar {
+  background-color: #f9f9f9;
+  padding: 1em;
+  width: 20%;
+}
+
+form {
+  margin-bottom: 1em;
+  color: hsl(219, 91%, 60%);
+}
+
+fieldset {
+  border: 1px solid hsl(219, 91%, 60%);
+  padding: 1em;
+}
+
+legend {
+  font-weight: bold;
+}
+
+label {
+  display: flex;
+}
+
+input[type="text"],
+select {
+  width: 100%;
+  margin-bottom: 0.5em;
+}
+
+button {
+  padding: 0.5em 1em;
+  border: none;
+  cursor: pointer;
+  background-color: hsl(219, 91%, 60%);
+}
+
+button:hover {
+  background-color: #555;
+}
+
+/* Content styles */
+.info-container {
+  display: flex;
+  margin-bottom: 0;
+  font-size: 1.5em;
+  font-weight: bold;
+  padding: 0;
+  width: 100%;
+  border: 7px solid hsl(219, 91%, 60%);
+  /* text-align: center; */
+  background-color: wheat;
+  color: hsl(219, 91%, 60%);
+  position: relative;
+}
+
+/* Play container styles */
+.play-container {
+  display: flex;
+}
+
+.play-body {
+  padding: 1em;
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  .form-container,
+  .info-container,
   .play-container {
-    display: flex;
+    flex-direction: column;
   }
-  
+
+  .sidebar,
+  .content,
   .play-body {
-    padding: 1em;
+    width: 100%;
   }
-  
-  /* Responsive layout */
-  @media (max-width: 768px) {
-    .form-container,
-    .info-container,
-    .play-container {
-      flex-direction: column;
-    }
-  
-    .sidebar,
-    .content,
-    .play-body {
-      width: 100%;
-    }
-  }
-  
+}
+
