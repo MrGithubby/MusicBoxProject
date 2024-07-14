@@ -62,7 +62,7 @@ const getMusicPlaylistbyGenre = function () {
     console.log(genre);
     const apiUrl = `https://ws.audioscrobbler.com/2.0/?method=tag.gettoptracks&tag=${genre}&api_key=a44d846982283933b1ebb0aacdef6e3b&format=json`;
    
-    fetch request
+  //  fetch request
     function jsonp(apiURL, callback) {
       const script = document.createElement('script');
       const callbackName = 'jsonp_callback_' + Math.round(100000 * Math.random());
