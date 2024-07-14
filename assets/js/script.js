@@ -3,26 +3,15 @@ const userFormEl = document.querySelector(".user-form");
 const searchButtonEl = document.querySelector(".pure-button-primary");
 const artistInputEl = document.querySelector("#artist-search");
 const genreInputEl = document.querySelector("#genre-search");
-const decadeInputEl = document.querySelector("#decade-search");
 const infoContainerEl = document.querySelector("#info-container");
 const playContainerEl = document.querySelector("#play-container");
 
+const artistUpdate = document.querySelector("#artist-name");
+const trackUpdate = document.querySelector("#track-name");
+const imageUpdate = document.querySelector("#artist-art");
+const genreUpdate = document.querySelector("#genre");
 
-function jsonp(url, callback) {
-  const script = document.createElement('script');
-  const callbackName = 'jsonp_callback_' + Math.round(100000 * Math.random());
-  window[callbackName] = function(data) {
-    delete window[callbackName];
-    document.body.removeChild(script);
-    callback(data);
-  };
-  script.src = url + (url.indexOf('?') >= 0 ? '&' : '?') + 'callback=' + callbackName;
-  document.body.appendChild(script);
-}
 
-jsonp('https://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=disco&api_key=22ef6f490dec67804c3068ad28ccc957&format=json', function(data) {
-  console.log(data);
-});
 
 //const returnDataFromStorage = function() {};
 
@@ -31,34 +20,25 @@ const formSubmitHandler = function (event) {
   
     const artist = artistInputEl.value.trim();
     const genre = genreInputEl.value.trim();
-    //const decade = decadeInputEl.value.trim();
   
     console.log(artist);
 
-
-
-    if (artist || genre || decade) {
+    if (artist || genre) {
       getMusicPlaylistHandler();
-      
     } 
-    if (!artist && !genre && !decade)
+    if (!artist && !genre)
         {
-      alert("Please enter an artist, genre, or decade");
-      
+      alert("Please enter an artist, genre");   
     };
 
     //Clears the form after hitting search
-
     artistInputEl.value = "";
     genreInputEl.value = "";
-    decadeInputEl.value = "";
     //infoContainerEl.textContent = "";
     //playContainerEl.textContent = "";
 };
 
 const getMusicPlaylistHandler = function() {
-
-
     const artist = artistInputEl.value.trim();
     const genre = genreInputEl.value.trim();
     //const decade = decadeInputEl.value.trim();
@@ -72,63 +52,93 @@ const getMusicPlaylistHandler = function() {
         getMusicPlaylistbyGenre();
         return;
     }
-
     //else {
     //    getChartToppers();
     //}
-
 };
 
-
-const getMusicPlaylistbyArtist = function () {
-    const artist = artistInputEl.value.trim();
-    //const genre = genreInputEl.value.trim();
-    //const decade = decadeInputEl.value.trim();
-
-    //create a loop to go through each year and pull back data for each year in the decade?
-
-
-    const apiUrl = `http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=${artist}&api_key=a44d846982283933b1ebb0aacdef6e3b&format=json`;
-
-    //fetch request
-    fetch(apiUrl).then(function (response) {
-        if (response.ok) {
-          return response.json().then(function (data) {
-             console.log(data);
-            getMusicDatabyArtist(data);
-          });
-        }
-      });
-
-
-
-}  
-
 const getMusicPlaylistbyGenre = function () {
-    //const artist = artistInputEl.value.trim();
     const genre = genreInputEl.value.trim();
-    //const decade = decadeInputEl.value.trim();
-
     console.log(genre);
-
     const apiUrl = `http://ws.audioscrobbler.com/2.0/?method=tag.gettoptracks&tag=${genre}&api_key=a44d846982283933b1ebb0aacdef6e3b&format=json`;
+   
     //fetch request
-    fetch(apiUrl).then(function (response) {
-        if (response.ok) {
-          return response.json().then(function (data) {
-             console.log(data);
-             getMusicDatabyGenre(data);
-          });
-        }
-      });
-
-
+    function jsonp(apiURL, callback) {
+      const script = document.createElement('script');
+      const callbackName = 'jsonp_callback_' + Math.round(100000 * Math.random());
+      window[callbackName] = function(data) {
+        delete window[callbackName];
+        document.body.removeChild(script);
+        callback(data);
+      };
+      script.src = apiUrl + (apiUrl.indexOf('?') >= 0 ? '&' : '?') + 'callback=' + callbackName;
+      document.body.appendChild(script);
+    }
+    
+    jsonp('http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=${artist}&api_key=a44d846982283933b1ebb0aacdef6e3b&format=json', function(data) {
+      const trackArray = data.tracks.track;
+      function pickRandomTrack(arr) {
+        let randomIndex = Math.floor(Math.random() * trackArray.length);
+        return trackArray[randomIndex];
+      }
+      const randomTrack = pickRandomTrack(trackArray)
+      console.log(randomTrack);      
+      console.log(randomTrack.name);    
+      console.log(randomTrack.artist.name);       
+      const mbid = randomTrack.artist.mbid;
+      const imageUrl = `https://musicbrainz.org/ws/2/artist/${mbid}?inc=url-rels&fmt=json`;
+      console.log(mbid);
+      console.log(imageUrl);
+      // https://github.com/hugovk/now-playing-radiator/commit/e6de980db9da6846edc5aa2d2f7057b8f3b21bc8
+      fetch(imageUrl)
+      .then(res => res.json())
+      .then((out) => {
+          const relations = out.relations;
+          // console.table(relations);
+          // Find image relation
+          for (let i = 0; i < relations.length; i++) {
+              if (relations[i].type === 'image') {
+                let image_url = relations[i].url.resource;
+                if (image_url.startsWith('https://commons.wikimedia.org/wiki/File:')) {
+                    const filename = image_url.substring(image_url.lastIndexOf('/') + 1);
+                    image_url = 'https://commons.wikimedia.org/wiki/Special:Redirect/file/' + filename;
+                }
+                console.log(image_url);
+                imageUpdate.src = image_url
+              }
+              artistUpdate.textContent = randomTrack.artist.name
+              genreUpdate.textContent = genre
+              trackUpdate.textContent = randomTrack.name
+            }
+      })
+      
+    })
 
 }
 
+
+const pikcMusicbyGenre = function(data) {
+
+  const trackArray = data.tracks.track;
+
+  function pickRandomTrack(arr) {
+    let randomIndex = Math.floor(Math.random() * trackArray.length);
+    return trackArray[randomIndex];
+  }
+
+  const randomTrack = pickRandomTrack(trackArray)
+
+  console.log(randomTrack);
 //const displayMusicDetails = function() {};
 
 //const saveDataToStorage = function() {};
+
+
+
+
+
+
+
 
 const getMusicDatabyArtist = function(data) {
 
@@ -167,18 +177,7 @@ const getMusicDatabyArtist = function(data) {
   });
   };
 
-const getMusicDatabyGenre = function(data) {
 
-  const trackArray = data.tracks.track;
-
-  function pickRandomTrack(arr) {
-    let randomIndex = Math.floor(Math.random() * trackArray.length);
-    return trackArray[randomIndex];
-  }
-
-  const randomTrack = pickRandomTrack(trackArray)
-
-  console.log(randomTrack);
 
   //for (let i = 0; i < trackArray.length; i++) {
     //console.log(trackArray[i]);
@@ -204,10 +203,62 @@ const getMusicDatabyGenre = function(data) {
     });
   }
 });
-
 };
 
 
+
+
+const getMusicPlaylistbyArtist = function () {
+  const artist = artistInputEl.value.trim();
+  console.log(artist);
+  const apiUrl = `http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&tag=${artist}&api_key=a44d846982283933b1ebb0aacdef6e3b&format=json`;
+ 
+  //fetch request
+  function jsonp(apiURL, callback) {
+    const script = document.createElement('script');
+    const callbackName = 'jsonp_callback_' + Math.round(100000 * Math.random());
+    window[callbackName] = function(data) {
+      delete window[callbackName];
+      document.body.removeChild(script);
+      callback(data);
+    };
+    script.src = apiUrl + (apiUrl.indexOf('?') >= 0 ? '&' : '?') + 'callback=' + callbackName;
+    document.body.appendChild(script);
+  }
+  
+  jsonp('http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=${artist}&api_key=a44d846982283933b1ebb0aacdef6e3b&format=json', function(data) {
+    console.log(data);
+    console.log(data.tracks.track[3].name);
+    console.log(data.tracks.track[3].artist.name)
+    console.log(data.tracks.track[3].image[3]["#text"])
+    const mbid = data.tracks.track[3].artist.mbid;
+    const imageUrl = `https://musicbrainz.org/ws/2/artist/${mbid}?inc=url-rels&fmt=json`;
+    console.log(mbid);
+    console.log(imageUrl);
+    // https://github.com/hugovk/now-playing-radiator/commit/e6de980db9da6846edc5aa2d2f7057b8f3b21bc8
+    fetch(imageUrl)
+    .then(res => res.json())
+    .then((out) => {
+        const relations = out.relations;
+        console.table(relations);
+        console.log(relations[4])
+        // Find image relation
+        for (let i = 0; i < relations.length; i++) {
+            if (relations[i].type === 'image') {
+                let image_url = relations[i].url.resource;
+                if (image_url.startsWith('https://commons.wikimedia.org/wiki/File:')) {
+                    const filename = image_url.substring(image_url.lastIndexOf('/') + 1);
+                    image_url = 'https://commons.wikimedia.org/wiki/Special:Redirect/file/' + filename;
+                }
+                console.log(image_url);
+            }
+        }
+    })
+    
+})
+}
+
+
+
+
 userFormEl.addEventListener("submit", formSubmitHandler);
-
-
