@@ -41,8 +41,7 @@ const formSubmitHandler = function (event) {
 const getMusicPlaylistHandler = function() {
     const artist = artistInputEl.value.trim();
     const genre = genreInputEl.value.trim();
-    //const decade = decadeInputEl.value.trim();
-
+   
     if (artist) {
         getMusicPlaylistbyArtist();
         return;
