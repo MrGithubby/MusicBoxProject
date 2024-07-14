@@ -13,22 +13,6 @@ const genreUpdate = document.querySelector("#genre");
 
 
 
-function jsonp(url, callback) {
-  const script = document.createElement('script');
-  const callbackName = 'jsonp_callback_' + Math.round(100000 * Math.random());
-  window[callbackName] = function(data) {
-    delete window[callbackName];
-    document.body.removeChild(script);
-    callback(data);
-  };
-  script.src = url + (url.indexOf('?') >= 0 ? '&' : '?') + 'callback=' + callbackName;
-  document.body.appendChild(script);
-}
-
-jsonp('https://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=disco&api_key=22ef6f490dec67804c3068ad28ccc957&format=json', function(data) {
-  console.log(data);
-});
-
 //const returnDataFromStorage = function() {};
 
 const formSubmitHandler = function (event) {
