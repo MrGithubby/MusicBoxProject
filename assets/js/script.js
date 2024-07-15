@@ -7,7 +7,7 @@ const playContainerEl = document.querySelector("#play-container");
 
 const artistUpdate = document.querySelector("#artist-name");
 const trackUpdate = document.querySelector("#track-name");
-const imageUpdate = document.querySelector("#artist-art");
+const imageUpdate = document.querySelector(".pure-img");
 const genreUpdate = document.querySelector("#genre");
 
 

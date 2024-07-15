@@ -114,11 +114,15 @@
                         <img class="pure-img" src="">
                     </div> 
                     <div class="info-body">
-                        <p>Artist Name</p>
-                        <p>CoverArt/Img</p>
-                        <p>Genre</p>
-                        <p>Release date</p>
-                        <p>Album name</p>
+                        <div style="display: flex; justify-content: space-between;">
+                        <p>Artist Name: </p>
+                        <p id="artist-name"></p>
+                        </div>
+                        <p>Genre</p><span id="genre"></span>
+                        <!-- <p>Release date</p> -->
+                        <p>Track name: </p><span id="track-name"></span>
+
+                        <img id="artist-art" height="75%" width="75%">
                     </div> 
                 </div>
             </div>
@@ -145,22 +149,18 @@
        
         <section class="test-info">
             <div class="content pure-u-1 pure-u-md-3-4">
-                <p id="artist-name"></p>
-                <p id="track-name"></p>
-                <img id="artist-art" height="75%" width="75%">
-                <p id="genre"></p>
                 </div>
             </div>
           </div>
         </div>
       </section>
-      <section class="play-container">
+      <!-- <section class="play-container">
         <div class="content pure-u-1 pure-u-md-3-4">
           <div class="play-body">
             <p>Widget Goes Here</p></div>
             <div id="player"></div>
         </div>
-      </section>
+      </section> -->
       <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
       <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
       <script src=".\assets\js\script.js"></script>
