@@ -10,6 +10,7 @@ const trackUpdate = document.querySelector("#track-name");
 const imageUpdate = document.querySelector("#artist-art");
 const genreUpdate = document.querySelector("#genre");
 
+const NextSongBtnEl = document.querySelector("#next-song");
 
 
 //const returnDataFromStorage = function() {};
@@ -43,11 +44,13 @@ const getMusicPlaylistHandler = function() {
     //const decade = decadeInputEl.value.trim();
 
     if (artist) {
+        localStorage.setItem('artist', artist);
         getMusicPlaylistbyArtist();
         return;
     }
 
     if (genre) {
+        localStorage.setItem('genre', genre);
         getMusicPlaylistbyGenre();
         return;
     }
@@ -57,7 +60,8 @@ const getMusicPlaylistHandler = function() {
 };
 
 const getMusicPlaylistbyGenre = function () {
-    const genre = genreInputEl.value.trim();
+    //const genre = genreInputEl.value.trim();
+    const genre = localStorage.getItem('genre');
     console.log(genre);
     const apiUrl = `https://ws.audioscrobbler.com/2.0/?method=tag.gettoptracks&tag=${genre}&api_key=a44d846982283933b1ebb0aacdef6e3b&format=json`;
    
@@ -128,6 +132,8 @@ const pikcMusicbyGenre = function(data) {
   const randomTrack = pickRandomTrack(trackArray)
 
   console.log(randomTrack);
+
+  
 //const displayMusicDetails = function() {};
 
 //const saveDataToStorage = function() {};
@@ -208,7 +214,8 @@ const getMusicDatabyArtist = function(data) {
 
 
 const getMusicPlaylistbyArtist = function () {
-  const artist = artistInputEl.value.trim();
+  const artist = localStorage.getItem('artist');
+  //const artist = artistInputEl.value.trim();
   console.log(artist);
   const apiUrl = `http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&tag=${artist}&api_key=a44d846982283933b1ebb0aacdef6e3b&format=json`;
  
@@ -257,7 +264,24 @@ const getMusicPlaylistbyArtist = function () {
 })
 }
 
+NextSongBtnEl.addEventListener('click', function (event) {
+  event.preventDefault();
 
+    const artist = localStorage.getItem('artist');
+    const genre = localStorage.getItem('genre');
+    
+    if (artist) {
+      getMusicPlaylistbyArtist();
+  
+    }
+    if (genre) {
+      getMusicPlaylistbyGenre();
+    }
+  
+});
 
 
 userFormEl.addEventListener("submit", formSubmitHandler);
+
+
+
