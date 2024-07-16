@@ -13,6 +13,18 @@ const genreUpdate = document.querySelector("#genre");
 const NextSongBtnEl = document.querySelector("#next-song");
 const SearchSongBtnEl = document.querySelector("#search-song");
 
+const saveSongEl = document.querySelector("#save-song"); 
+const savedPlaylistEl = document.querySelector("#saved-playlist"); 
+
+// load saved songs
+function loadSavedSongs() {
+  for (item in savedSongs){
+    const liElement = document.createElement('li');
+    liElement.textContent = `${savedSongs[item].artist} – ${savedSongs[item].track}`;
+    savedPlaylistEl.appendChild(liElement);
+  }
+}
+
 // Get the modal element
 const modal = document.getElementById('myModal');
 
@@ -39,9 +51,38 @@ window.onclick = function(event) {
 
 $(document).ready(function() {
  openModal();
+ loadSavedSongs();
 });
 
-//const returnDataFromStorage = function() {};
+// Retrieve saved songs from local storage or initialize an empty array if not found
+const savedSongs = JSON.parse(localStorage.getItem('song')) || [];
+
+// Function to save data to local storage
+function saveDataToStorage() {
+  // Log the current values of the input fields
+  console.log('Artist:', artistUpdate.value);
+  console.log('Track:', trackUpdate.value);
+  console.log('Genre:', genreUpdate.value);
+
+  let songSelection = {
+    "artist": artistUpdate.textContent,
+    "track": trackUpdate.textContent,
+    "genre": genreUpdate.textContent,
+  };
+
+  // Add the new song selection to the saved songs array
+  savedSongs.push(songSelection);
+
+  // Save the updated array back to local storage
+  localStorage.setItem('song', JSON.stringify(savedSongs));
+}
+
+// Add an event listener to the noButton to save data and log the saved songs array
+saveSongEl.addEventListener('click', function() {
+  saveDataToStorage();
+  console.log(savedSongs);
+});
+
 
 const formSubmitHandler = function (event) {
     event.preventDefault();

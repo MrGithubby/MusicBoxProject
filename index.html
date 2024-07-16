@@ -47,7 +47,7 @@
                             <fieldset>
                             <legend>Discovery Starts Here:</legend>
                             <label for="artist-search">Artist Search:</label>
-                            <input type="text" id="artist-search" placeholder="Artist"/>
+                            <input type="text" id="artist-search" placeholder="Do Not Use"/>
                                 <br>
                             <label for="genre-search">Genre Search:</label>
                             <select id="genre-search">
@@ -114,22 +114,18 @@
 
         <section class="info-container">
             <div class="content pure-u-1 pure-u-md-3-4">
-                <h1 class="content-subhead">Information:</h1>
+                <h2 class="content-subhead">Information:</h2>
                 <div class="info">
-                    <header class="info-header">Song Name</header>
+                    <!-- <header class="info-header">Song Name</header> -->
+                     <br>
                     <div class="photo-box  pure-u-lg-1-3">
                         <img class="pure-img" src="">
                     </div> 
                     <div class="info-body">
-                        <div style="display: flex; justify-content: space-between;">
-                        <p>Artist Name: </p>
-                        <p id="artist-name"></p>
-                        </div>
-                        <p>Genre</p><span id="genre"></span>
+                        <p>Artist Name: <span id="artist-name"></span></p>
+                        <p>Genre: <span id="genre"></span></p>
                         <!-- <p>Release date</p> -->
-                        <p>Track name: </p><span id="track-name"></span>
-
-                        <img id="artist-art" height="75%" width="75%">
+                        <p>Track name: <span id="track-name"></span></p>
                     </div> 
                 </div>
             </div>
@@ -137,15 +133,21 @@
 
         <section class="question-box pure-u-1 pure-u-md-3-4">
             <div class="next-buttons">
-                <button id="next-song" class ="button-xlarge pure-button ">Get another Random song -></button>
+                <br>
+                <button id="next-song" class="button-xlarge pure-button ">Get another Random song -></button>
                 <br>
                 <br>
-                <button class="button-xlarge pure-button">Look at your saved playlist -></button>
+                <button class="button-xlarge pure-button" id="save-song">Add to your saved playlist -></button>
                 <br>
                 <br>
                 <button id="search-song" class="button-xlarge pure-button">Search Again -></button>
             </div>
-            <div class="question-widget">
+            <br>
+
+            <h2 class="content-subhead">Saved Songs:</h2>
+            <ul id="saved-playlist"></ul>
+
+            <!-- <div class="question-widget">
                 <div class="content pure-u-md--5">
                     <h2 class="widget-subhead">Do you know this song?:</h2>
                     <div class="YesNo-buttons">
@@ -153,7 +155,7 @@
                         <button class="button-secondary pure-button">No</button>
                     </div> 
                 </div>
-            </div>         
+            </div>          -->
         </section>
     
        
@@ -178,7 +180,6 @@
       <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
       <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
       <script src=".\assets\js\script.js"></script>
-      <script src="deezerapi.js"></script>
       
     </main>
   </body>
