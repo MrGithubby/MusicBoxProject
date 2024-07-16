@@ -11,12 +11,42 @@ const imageUpdate = document.querySelector(".pure-img");
 const genreUpdate = document.querySelector("#genre");
 
 const NextSongBtnEl = document.querySelector("#next-song");
+const SearchSongBtnEl = document.querySelector("#search-song");
 
+// Get the modal element
+const modal = document.getElementById('myModal');
+
+// Get the close button element
+const closeBtn = document.getElementsByClassName("close")[0];
+
+closeBtn.onclick = function() {
+  modal.style.display = "none";
+}
+
+function openModal() {
+  modal.style.display = "block";
+}
+
+SearchSongBtnEl.onclick = function() {
+  openModal();
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+$(document).ready(function() {
+ openModal();
+});
 
 //const returnDataFromStorage = function() {};
 
 const formSubmitHandler = function (event) {
     event.preventDefault();
+
+    modal.style.display = "none";
   
     const artist = artistInputEl.value.trim();
     const genre = genreInputEl.value.trim();
