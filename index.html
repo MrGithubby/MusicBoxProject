@@ -34,74 +34,81 @@
             </div>
         </header>
 
-
+        
+          
+          
         <section class="music-app">
-            <div class="form-container">
-                <div class="sidebar pure-u-1-5">
-                    <form class ="user-form" id="pure-form pure-form-stacked">
-                        <fieldset>
-                        <legend>Discovery Starts Here:</legend>
-                        <label for="artist-search">Artist Search:</label>
-                        <input type="text" id="artist-search" placeholder="Artist"/>
-                            <br>
-                        <label for="genre-search">Genre Search:</label>
-                        <select id="genre-search">
-                            <option>No Selection</option>
-                            <option>Alternative</option>
-                            <option>Alternative Rock</option>
-                            <option>Ambient</option>
-                            <option>Acoustic</option>
-                            <option>Blues</option>
-                            <option>Black Metal</option>
-                            <option>Classical</option>
-                            <option>Country</option>
-                            <option>Christian</option>
-                            <option>Chillout</option>
-                            <option>Dance</option>
-                            <option>Death Metal</option>
-                            <option>Disco</option>
-                            <option>Electronic</option>
-                            <option>Electronica</option>
-                            <option>Experimental</option>
-                            <option>Folk</option>
-                            <option>Funk</option>
-                            <option>Hard Rock</option>
-                            <option>Hardcore</option>
-                            <option>Heavy Metal</option>
-                            <option>House</option>
-                            <option>Hip-Hop</option>
-                            <option>Indie</option>
-                            <option>Indie Rock</option>
-                            <option>Industrial</option>
-                            <option>Instrumental</option>
-                            <option>Jazz</option>
-                            <option>Metal</option>
-                            <option>Metalcore</option>
-                            <option>New Wave</option>
-                            <option>Other</option>
-                            <option>Pop</option>
-                            <option>Post-Rock</option>
-                            <option>Progressive Metal</option>
-                            <option>Progressive Rock</option>
-                            <option>Psychedelic</option>
-                            <option>Punk</option>
-                            <option>Punk Rock</option>
-                            <option>Rap</option>
-                            <option>Reggae</option>
-                            <option>Rhythm and Blues</option>
-                            <option>Rock</option>
-                            <option>Singer-Songwriter</option>
-                            <option>Soul</option>
-                            <option>Soundtrack</option>
-                            <option>Techno</option>
-                            <option>Thrash Metal</option>
-                            <option>World Music</option>
-                        </select> 
-                            <br>
-                        <button type="submit" class="pure-button pure-button-primary">Search</button>
-                        </fieldset>
-                    </form>
-                </div>   
+          <div id="myModal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+                <div class="form-container">
+                    <div class="sidebar pure-u-1-5">
+                        <form class ="user-form" id="pure-form pure-form-stacked">
+                            <fieldset>
+                            <legend>Discovery Starts Here:</legend>
+                            <label for="artist-search">Artist Search:</label>
+                            <input type="text" id="artist-search" placeholder="Artist"/>
+                                <br>
+                            <label for="genre-search">Genre Search:</label>
+                            <select id="genre-search">
+                                <option>No Selection</option>
+                                <option>Alternative</option>
+                                <option>Alternative Rock</option>
+                                <option>Ambient</option>
+                                <option>Acoustic</option>
+                                <option>Blues</option>
+                                <option>Black Metal</option>
+                                <option>Classical</option>
+                                <option>Country</option>
+                                <option>Christian</option>
+                                <option>Chillout</option>
+                                <option>Dance</option>
+                                <option>Death Metal</option>
+                                <option>Disco</option>
+                                <option>Electronic</option>
+                                <option>Electronica</option>
+                                <option>Experimental</option>
+                                <option>Folk</option>
+                                <option>Funk</option>
+                                <option>Hard Rock</option>
+                                <option>Hardcore</option>
+                                <option>Heavy Metal</option>
+                                <option>House</option>
+                                <option>Hip-Hop</option>
+                                <option>Indie</option>
+                                <option>Indie Rock</option>
+                                <option>Industrial</option>
+                                <option>Instrumental</option>
+                                <option>Jazz</option>
+                                <option>Metal</option>
+                                <option>Metalcore</option>
+                                <option>New Wave</option>
+                                <option>Other</option>
+                                <option>Pop</option>
+                                <option>Post-Rock</option>
+                                <option>Progressive Metal</option>
+                                <option>Progressive Rock</option>
+                                <option>Psychedelic</option>
+                                <option>Punk</option>
+                                <option>Punk Rock</option>
+                                <option>Rap</option>
+                                <option>Reggae</option>
+                                <option>Rhythm and Blues</option>
+                                <option>Rock</option>
+                                <option>Singer-Songwriter</option>
+                                <option>Soul</option>
+                                <option>Soundtrack</option>
+                                <option>Techno</option>
+                                <option>Thrash Metal</option>
+                                <option>World Music</option>
+                            </select> 
+                                <br>
+                            <button type="submit" class="pure-button pure-button-primary">Search</button>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>  
+              </div>   
             </div>
         </section>
 
@@ -134,6 +141,9 @@
                 <br>
                 <br>
                 <button class="button-xlarge pure-button">Look at your saved playlist -></button>
+                <br>
+                <br>
+                <button id="search-song" class="button-xlarge pure-button">Search Again -></button>
             </div>
             <div class="question-widget">
                 <div class="content pure-u-md--5">
@@ -161,6 +171,10 @@
             <div id="player"></div>
         </div>
       </section> -->
+
+    
+
+
       <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
       <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
       <script src=".\assets\js\script.js"></script>
